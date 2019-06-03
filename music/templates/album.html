@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}New Tamil Songs{% endblock %}
+
+{% block content %}
+<img src="{{ album.album_cover_image.url }}">
+
+<h1>{{ album.album_title }}</h1>
+<h3>{{ album.artist }}</h3>
+
+<ul>
+  {% for song in album.song_set.all %}
+   <li>{{ song.song_title }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
