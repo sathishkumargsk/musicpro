@@ -1,3 +1,6 @@
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Album
 
@@ -7,8 +10,7 @@ def index(request):
 
 def album(request, album_id):
 	album = get_object_or_404(Album, pk=album_id)
-	return render(request, 'album.html', {'album': album})	
-	
+	return render(request, 'album.html', {'album': album})
 
  
 
