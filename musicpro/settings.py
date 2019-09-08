@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'music',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306', 
+        'PORT': '3306',
     }
 }
 
