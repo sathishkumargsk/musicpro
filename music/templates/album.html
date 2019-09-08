@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}New Tamil Songs{% endblock %}
+
+{% block content %}
+<img src="{{ album.album_cover_image.url }}" width="540" height="296">
+
+
+
+
+{% if album %}
+    <div class="movie-info">
+    	<h6>Title : {{ album.album_title }}</h6>
+        <h6>Music Director : {{ album.artist }}</h6>
+    </div>
+	<table class="table table-default">
+		<tr class="table-secondary">
+				<td >Song Title</td>
+				<td><center>Play</center></td>
+				<td><center>Download</center></td>
+	   </tr>
+		{% for song in album.song_set.all %}
+		 	
+	            <tr>
+				<td>{{ song.song_title }}</a></td>
+				<td><center><audio id="sound{{song.id}}" src="{{song.song_file.url}}" preload="auto"></audio>
+					  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('sound{{song.id}}').play();">Play
+					  it</button>
+					  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('sound{{song.id}}').pause();">Pause
+					  </button>
+					</center>
+				</td>
+				<td><center><button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{song.song_file.url}}" download>Download</a></button></center></td>
+			    </tr>
+		  	  
+		{% endfor %}
+	</table>
+    {% endif %}		
+{% endblock %}
