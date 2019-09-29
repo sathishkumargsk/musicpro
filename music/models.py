@@ -1,14 +1,14 @@
 from django.db import models
 
 class Artist(models.Model):
-	artist_name = models.CharField(max_length=250)
+	artist_name = models.CharField(max_length=250, unique=True)
 
 	def __str__(self):
 		return self.artist_name
 
 class Album(models.Model):
 	artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-	album_title = models.CharField(max_length=250)
+	album_title = models.CharField(max_length=250, unique=True)
 	genre = models.CharField(max_length=100)
 	album_cover_image = models.ImageField(upload_to='covers')
 
@@ -18,11 +18,8 @@ class Album(models.Model):
 class Song(models.Model):
 	artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 	album = models.ForeignKey(Album, on_delete=models.CASCADE)
-	song_title = models.CharField(max_length=250)
+	song_title = models.CharField(max_length=250, unique=True)
 	song_file = models.FileField(upload_to='mp3')
 
 	def __str__(self):
-		return self.song_title 
-
-		
-
+		return self.song_title
