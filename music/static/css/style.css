@@ -1,0 +1,14 @@
+.plyicons{
+  width:32px;
+  height:32px
+}
+.imgcls{
+  padding:10px 0;
+}
+.imgcls img{
+   max-height: 300px;
+   width: 100%;
+}
+.movie-info{
+  padding: 25px 0;
+}

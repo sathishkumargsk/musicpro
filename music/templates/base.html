@@ -5,11 +5,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="description" content="{% block description %}New tamil {% endblock %}songs free download, tamil mp3 songs download, high quality tamil songs 320kbps download">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}New Tamil Songs{% endblock %}</title>
+    <script src="{% static 'js/script.js' %}"></script>
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,12 +21,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-     
+
       <li class="nav-item">
-        <a class="nav-link" href="#">Albums</a>
+        <a class="nav-link" href="{% url 'index' %}">Albums</a>
       </li>
-  
-      
+
+
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0" method="POST">
     	{% csrf_token %}

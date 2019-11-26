@@ -1,18 +1,28 @@
 {% extends 'base.html' %}
-
-{% block title %}New Tamil Songs{% endblock %}
-
+{% load static %}
+{% block title %}{{ album.album_title }} Songs free download{% endblock %}
+{% block description %}{{ album.album_title }} {% endblock %}
 {% block content %}
-<img src="{{ album.album_cover_image.url }}" width="540" height="296">
-
-
-
 
 {% if album %}
-    <div class="movie-info">
-    	<h6>Title : {{ album.album_title }}</h6>
-        <h6>Music Director : {{ album.artist }}</h6>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="imgcls">
+      <img src="{{ album.album_cover_image.url }}">
+      </div>
     </div>
+    <div class="col-md-8">
+      <div class="movie-info">
+      	<h6>Title : {{ album.album_title }}</h6>
+          <h6>Music Director : {{ album.artist }}</h6>
+      </div>
+    </div>
+
+  </div>
+
+
 	<table class="table table-default">
 		<tr class="table-secondary">
 				<td >Song Title</td>
@@ -20,20 +30,18 @@
 				<td><center>Download</center></td>
 	   </tr>
 		{% for song in album.song_set.all %}
-		 	
+
 	            <tr>
-				<td>{{ song.song_title }}</a></td>
+				<td><a>{{ song.song_title }}</a></td>
 				<td><center><audio id="sound{{song.id}}" src="{{song.song_file.url}}" preload="auto"></audio>
-					  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('sound{{song.id}}').play();">Play
-					  it</button>
-					  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('sound{{song.id}}').pause();">Pause
-					  </button>
-					</center>
+				    <img class="play plyicons" src="{% static 'images/play.png' %}" alt="play new tamil songs" onclick="play_pause('sound{{song.id}}',this)">
+			</center>
 				</td>
 				<td><center><button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{song.song_file.url}}" download>Download</a></button></center></td>
 			    </tr>
-		  	  
+
 		{% endfor %}
 	</table>
-    {% endif %}		
+  </div>
+    {% endif %}
 {% endblock %}
